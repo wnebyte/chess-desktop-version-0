@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+mainClassName = 'ChessApp'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["src/main/java"]
+        }
+        resources {
+            srcDirs = ["src/main/resources"]
+            includes = ["**/*.fxml", "**/*.css", "**/*.png"]
+        }
+    }
+}
+
+javafx {
+    version = "12.0.1"
+    modules = [ 'javafx.base', 'javafx.controls', 'javafx.fxml', 'javafx.graphics' ]
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+
+    def withoutFx = { exclude group: 'org.openjfx' } as Object
+    compile group: 'de.jensd', name: 'fontawesomefx-commons', version: '11.0'
+    compile group: 'de.jensd', name: 'fontawesomefx-controls', version: '11.0', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-emojione', version: '2.2.7-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-fontawesome', version: '4.7.0-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-icons525', version: '3.0.0-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-materialdesignfont', version: '1.7.22-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-materialicons', version: '2.2.0-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-materialstackicons', version: '2.1-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-octicons', version: '4.3.0-11', withoutFx
+    compile group: 'de.jensd', name: 'fontawesomefx-weathericons', version: '2.0.10-11', withoutFx
+
+    compile 'org.kordamp.ikonli:ikonli-javafx:11.3.5'
+    compile 'org.kordamp.ikonli:ikonli-fontawesome5-pack:11.3.5'
+}
